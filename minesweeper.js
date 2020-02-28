@@ -2,15 +2,24 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: [{row: 1, col: 1, isMine, hidden}, 
-          {row: 2, col:2, isMine, hidden},
-          {row: 3,col:3, isMine, hidden},
-          {row: 0, col:0, isMine, hidden}]
-  };
+  cells: [{row:1, col:1, isMine:[false], hidden:[true]},
+          {row:1.5, col:1.5, isMine:[false], hidden:[true]}, 
+          {row:.5, col:.5, isMine:[false], hidden:[true]}, 
+          {row:0, col:0, isMine:[false], hidden:[true]}]
+  }
+//console.log(board.cells.length); it gave 4 so the row and col numbers should be less than 4 as per the test that row and cell.number should be > length
 
 
 
 function startGame () {
+
+  
+
+console.log(lib.getSurroundingCells)
+
+
+
+
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
