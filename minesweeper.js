@@ -2,30 +2,35 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: [{row:1, col:1, isMine:[true], hidden:[true]},
-          {row:1.5, col:1.5, isMine:[true], hidden:[true]}, 
-          {row:1.75, col:1.75, isMine:[true], hidden:[true]}, 
-          {row:2, col:2, isMine:[true], hidden:[true]}, 
-          {row:2.5, col:2.5, isMine:[true], hidden:[true]}, 
-          {row:1.25, col:1.25, isMine:[true], hidden:[true]}, 
-          {row:3, col:3, isMine:[true], hidden:[true]}, 
-          {row:.5, col:.5, isMine:[true], hidden:[true]}, 
-          {row:0, col:0, isMine:[true], hidden:[true]}]
+  cells: [{row:1, col:1, isMine:[true], isMarked:[true], hidden:[true]},
+          {row:1.5, col:1.5, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:1.75, col:1.75, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:2, col:2, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:2.5, col:2.5, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:1.25, col:1.25, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:3, col:3, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:.5, col:.5, isMine:[true], isMarked:[true], hidden:[true]}, 
+          {row:0, col:0, isMine:[true], isMarked:[true], hidden:[true]}]
   }
 //console.log(board.cells.length); it gave 4 so the row and col numbers should be less than 4 as per the test that row and cell.number should be > length
 // add cells to make it 9 squares
 
-
+board.cells.forEach((a)=>{a.surroundingMines = countSurroundingMines})
 
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
- var countSurroundingMines=[];
- for (var i= 0; i > board.cells.length; i++); {
- countSurroundingMines = board.cells[i];
- console.log(board.cells[i]);
-}
+//make a for loop of board.cells and its to call countSurroundingMines once for each cell
+//assign result of countSurroundingMines to a new property in each called surroundingMines
 
+
+ //for (var i= 0; i > board.cells.length; i++); {
+ //countSurroundingMines 
+for (var elem in board){
+  //console.log(elem, board[elem]);
+  countSurroundingMines= (elem, board[elem]);
+}
+console.log(countSurroundingMines);
 
 
 
@@ -36,7 +41,7 @@ function startGame () {
 
 
 
-
+console.log()
 
 
 
@@ -69,3 +74,10 @@ function checkForWin () {
 function countSurroundingMines (cell) {
 }
 
+
+
+
+
+
+//function addScore (gradebook, name, scores){
+  //gradebook[name].testScores.push(scores)}
