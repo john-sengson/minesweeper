@@ -75,9 +75,10 @@ function countSurroundingMines (cell) {
 }
 
 
+//start over with pseudocode
+//write a loop that go through contents of board cell- should call countSurroundingMines toa property to eaach cell object it should be called surroundingMines
+//function countSurroundingMines need to be define to return the number of cells aroud the current cell that have the isMine property set to true
+//
 
 
 
-
-//function addScore (gradebook, name, scores){
-  //gradebook[name].testScores.push(scores)}
