@@ -15,35 +15,29 @@ var board = {
 //console.log(board.cells.length); it gave 4 so the row and col numbers should be less than 4 as per the test that row and cell.number should be > length
 // add cells to make it 9 squares
 
-board.cells.forEach((a)=>{a.surroundingMines = countSurroundingMines})
+
 
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
 //make a for loop of board.cells and its to call countSurroundingMines once for each cell
 //assign result of countSurroundingMines to a new property in each called surroundingMines
+var countSurroundingMines = board.cells;
+for (var i= 0, len= countSurroundingMines.length; i < len; i++)
+for (var surroundingMines in countSurroundingMines[i]){
+  console.log(surroundingMines);
+}
+  }
+
 
 
  //for (var i= 0; i > board.cells.length; i++); {
  //countSurroundingMines 
-for (var elem in board){
+//for (var elem in board){
   //console.log(elem, board[elem]);
-  countSurroundingMines= (elem, board[elem]);
-}
-console.log(countSurroundingMines);
-
-
-
-
-
+  //countSurroundingMines= (elem, board[elem]);
+//}
   lib.initBoard()
-}
-
-
-
-console.log()
-
-
 
 //board.forEach(function(cells){
   //cells.surroundingMines() = countSurroundingMines()
@@ -72,7 +66,10 @@ function checkForWin () {
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
-}
+  var surroundingMines = getSurroundingCells(row, col);
+  for ( var surroundingMines = 0, i < getSurroundingCells(row, col).length; i++)
+
+
 
 
 //start over with pseudocode
