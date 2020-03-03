@@ -34,6 +34,15 @@ for (var surroundingMines in countSurroundingMines[i]){
   lib.initBoard()
 }
 
+// add event listeners to call for checkwin when left button is clicked use document.addEventListener
+// create another for the right click as well
+// go to function checkforWin for next step
+// syntax is element.addEventListener("click", function())
+
+document.addEventListener("click", checkForWin);
+document.addEventListener("contextmenu", checkForWin);
+
+
 // Define this function to look for a win condition:
 //
 // 1. Are all of the cells that are NOT mines visible?
@@ -44,9 +53,9 @@ for (var surroundingMines in countSurroundingMines[i]){
 //both criteria above pass then displayMesage function at the bottom of function to use .
 //need 3 var for 3 properties the do if else statements
 function checkForWin () {
-  var isMineCount= 0;
-  var isMarkedCount= 0;
-  var hiddenCount= 0;
+  //var isMineCount= 0;
+  //var isMarkedCount= 0;
+  //var hiddenCount= 0;
 
  // for (var i= 0; i < board.cells.length; i++){
     //if (board.cells[i].isMine){
@@ -60,21 +69,29 @@ function checkForWin () {
  //   }
  // }
 
- for (var i= 0; i < board.cells.length; i++){
-    if (board.cells[i].isMine){
-      isMineCount++
-    };
-    if (board.cells[i].isMarked){
-      isMarkedCount++
-    };
-    if (board.cells[i].isMine == board.cells[i].hidden){
-      hiddenCount++
-    };
-    if (isMineCount == isMarkedCount && hiddenCount== 0){
-     lib.displayMessage('You win!');
-   };
-  }
-  }  
+ //for (var i= 0; i < board.cells.length; i++){
+    //if (board.cells[i].isMine){
+    //  isMineCount++
+    //};
+    //if (board.cells[i].isMarked){
+     // isMarkedCount++
+    //};
+    //if (board.cells[i].isMine === board.cells[i].hidden){
+     // hiddenCount++
+    //};
+    //if (isMineCount == isMarkedCount && hiddenCount== 0){
+     //lib.displayMessage('You win!');
+   //};
+  //}
+  //}  
+  //var mineBoard= board.cells
+  //for (var i=0; i < mineBoard[i].length; i++){
+    //if (mineBoard[i].isMine == true && mineBoard[i].isMarked){
+     // return mineBoard++
+   // } else if (mineBoard.isMine == false && mineBoard[i].hidden == true){
+      //return lib.displayMessage('You win!');
+  //  }
+ // }
 
 
 
@@ -98,19 +115,9 @@ function countSurroundingMines (cell) {
 var count= 0;
 var surrounding = lib.getSurroundingCells(cell.row, cell.col)
 for (var i = 0; i < surrounding.length; i++);
- if (surrounding[i].isMine){
+ if (surrounding[i].isMine == true){
    count++;
  }
-return count
+ return count
 }
-
-// add event listeners to call for checkwin when left button is clicked use document.addEventListener
-// create another for the right click as well
-// go to function checkforWin for next step
-// syntax is element.addEventListener("click", function())
-
-document.addEventListener("click", checkForWin);
-document.addEventListener("contextmenu", checkForWin);
-
-
-
+}
