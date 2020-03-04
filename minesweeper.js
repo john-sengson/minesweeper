@@ -28,13 +28,17 @@ function startGame () {
  // board is gone if i use this but if i use below which shouldnt be right coz len should have no .length
 
 
+//var countSurroundingMines = board.cells
+//for (var i= 0, len= countSurroundingMines.length; i < len.length; i++){
+ //len[i].surroundingMines = countSurroundingMines(len[i]);
+//}
+
 var countSurroundingMines = board.cells
-for (var i= 0, len= countSurroundingMines.length; i < len.length; i++){
- len[i].surroundingMines = countSurroundingMines(len[i]);
+function countSurroundingMines(){
+for (var i= 0; i < countSurroundingMines.length; i++) {
+  board.cells[i]= countSurroundingMines(board.cells[i]);
 }
-
- 
-
+}
 
 
   lib.initBoard()
