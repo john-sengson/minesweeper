@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: [{row:0, col:1, isMine:false, isMarked:false, hidden:true},
+  cells: [{row:0, col:0, isMine:false, isMarked:false, hidden:true},
+          {row:0, col:1, isMine:false, isMarked:false, hidden:true},
           {row:0, col:2, isMine:true, isMarked:false, hidden: true}, 
           {row:0, col:3, isMine:false, isMarked:false, hidden:true}, 
           {row:1, col:0, isMine:true, isMarked:false, hidden:true}, 
@@ -10,7 +11,7 @@ var board = {
           {row:1, col:2, isMine:false, isMarked:false, hidden:true}, 
           {row:1, col:3, isMine:false, isMarked:false, hidden:true}, 
           {row:2, col:0, isMine:false, isMarked:false, hidden:true}, 
-          {row:0, col:0, isMine:false, isMarked:false, hidden:true}]
+          ]
   }
 //console.log(board.cells.length); it gave 4 so the row and col numbers should be less than 4 as per the test that row and cell.number should be > length
 // add cells to make it 9 squares
@@ -77,28 +78,31 @@ for (var i= 0; i < board.cells.length; i++){
   if (board.cells[i].isMine){
    isMineCounter++
   }
-
-
+}
+}
 var isMarkedCounter= 0;
 function isMarkedCount(){
 for (var i= 0; i < board.cells.length; i++){
   if (board.cells[i].isMarked){
    isMarkedCounter++
   }
-
-
+}
+}
 var hiddenCounter= 0;
 function isMarkedhCount(){
   for (var i= 0; i < board.cells.length; i++){
     if (board.cells[i].isMine == board.cells[i].hidden){
       hiddenCounter++ 
     }
-
+  }
+}
     function checkForWin() {
+      for (var i= 0; i < board.cells.length; i++){
       if (isMineCounter == isMarkedCounter && hiddenCounter== 0){
         lib.displayMessage('You win!');
        }
-     
+      }
+    }
 
 
 
@@ -127,5 +131,5 @@ for (var i = 0; i < surrounding.length; i++);
  }
  return count;
 }
-}
+
   
