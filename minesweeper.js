@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Define your `board` object here!
 var board = {
   cells: [{row:0, col:1, isMine:false, isMarked:false, hidden:true},
-          {row:0, col:2, isMine:true, isMarked:true, hidden: true}, 
-          {row:0, col:3, isMine:false, isMarked:true, hidden:true}, 
+          {row:0, col:2, isMine:true, isMarked:false, hidden: true}, 
+          {row:0, col:3, isMine:false, isMarked:false, hidden:true}, 
           {row:1, col:0, isMine:true, isMarked:false, hidden:true}, 
-          {row:1, col:1, isMine:true, isMarked:true, hidden:true}, 
-          {row:1, col:2, isMine:false, isMarked:true, hidden:true}, 
+          {row:1, col:1, isMine:true, isMarked:false, hidden:true}, 
+          {row:1, col:2, isMine:false, isMarked:false, hidden:true}, 
           {row:1, col:3, isMine:false, isMarked:false, hidden:true}, 
-          {row:2, col:0, isMine:false, isMarked:true, hidden:true}, 
-          {row:0, col:0, isMine:false, isMarked:true, hidden:true}]
+          {row:2, col:0, isMine:false, isMarked:false, hidden:true}, 
+          {row:0, col:0, isMine:false, isMarked:false, hidden:true}]
   }
 //console.log(board.cells.length); it gave 4 so the row and col numbers should be less than 4 as per the test that row and cell.number should be > length
 // add cells to make it 9 squares
@@ -57,46 +57,48 @@ document.addEventListener("contextmenu", checkForWin);
 // if every mine is marked but still some hidden = true then not win yet
 //both criteria above pass then displayMesage function at the bottom of function to use .
 //need 3 var for 3 properties the do if else statements
-function checkForWin() {
+
+//for (var i= 0; i < board.cells.length; i++){
+  //if (board.cells[i].isMine){
+  // isMineCounter++
+ //}  if (board.cells[i].isMarked){
+   // isMarkedCounter++
+   // console.log(isMineCounter)
+ // } if (board.cells[i].isMine == board.cells[i].hidden){
+   //hiddenCounter++
+  //} if (isMineCounter == isMarkedCounter && hiddenCounter== 0){
+   //lib.displayMessage('You win!');
+ // }
+//}
+//}
+var isMineCounter= 0;
+function isMineCount(){
 for (var i= 0; i < board.cells.length; i++){
   if (board.cells[i].isMine){
    isMineCounter++
- } else if (board.cells[i].isMarked){
-    isMarkedCounter++
-   // console.log(isMineCounter)
-  } else if (board.cells[i].isMine == board.cells[i].hidden){
-   hiddenCounter++
-  } else (isMineCounter == isMarkedCounter && hiddenCounter== 0)
-   lib.displayMessage('You win!');
   }
-}
 
-var isMineCounter= 0;
+
 var isMarkedCounter= 0;
+function isMarkedCount(){
+for (var i= 0; i < board.cells.length; i++){
+  if (board.cells[i].isMarked){
+   isMarkedCounter++
+  }
+
+
 var hiddenCounter= 0;
- //for (var i= 0; i < board.cells.length; i++){
-    //if (board.cells[i].isMine){
-    //  isMineCount++
-    //};
-    //if (board.cells[i].isMarked){
-     // isMarkedCount++
-    //};
-    //if (board.cells[i].isMine === board.cells[i].hidden){
-     // hiddenCount++
-    //};
-    //if (isMineCount == isMarkedCount && hiddenCount== 0){
-     //lib.displayMessage('You win!');
-   //};
-  //}
-  //}  
-  //var mineBoard= board.cells
-  //for (var i=0; i < mineBoard[i].length; i++){
-    //if (mineBoard[i].isMine == true && mineBoard[i].isMarked){
-     // return mineBoard++
-   // } else if (mineBoard.isMine == false && mineBoard[i].hidden == true){
-      //return lib.displayMessage('You win!');
-  //  }
- // }
+function isMarkedhCount(){
+  for (var i= 0; i < board.cells.length; i++){
+    if (board.cells[i].isMine == board.cells[i].hidden){
+      hiddenCounter++ 
+    }
+
+    function checkForWin() {
+      if (isMineCounter == isMarkedCounter && hiddenCounter== 0){
+        lib.displayMessage('You win!');
+       }
+     
 
 
 
@@ -125,4 +127,5 @@ for (var i = 0; i < surrounding.length; i++);
  }
  return count;
 }
-
+}
+  
