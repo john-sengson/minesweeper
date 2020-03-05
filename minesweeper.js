@@ -35,7 +35,7 @@ function startGame () {
 
 
 for (var i= 0; i < board.cells.length; i++) {
-board.cells[i].surroundingMines= countSurroundingMines(board.cells[i]);
+board.cells[i].surroundingMines= countSurroundingMines(board.cells[i])
 }
 
 
@@ -126,12 +126,14 @@ function hiddenCount(){
 function countSurroundingMines (cell) {
 // define function above to return number of cells around the cell that have the isMine= true
 
+
+var surrounding = lib.getSurroundingCells(cell.row, cell.col);
 var count= 0;
-var surrounding = lib.getSurroundingCells(cell.row, cell.col)
-for (var i = 0; i < surrounding.length; i++);
- if (surrounding[i].isMine == true) {
+for (var i = 0; i < surrounding.length; i++)
+ if (surrounding[i].isMine) {
    count++;
  }
+
  return count;
 }
 
