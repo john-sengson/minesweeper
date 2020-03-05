@@ -81,6 +81,7 @@ for (var i= 0; i < board.cells.length; i++){
   if (board.cells[i].isMine){
    isMineCounter++
   }
+  return isMineCounter;
 }
 }
 var isMarkedCounter= 0;
@@ -94,19 +95,23 @@ for (var i= 0; i < board.cells.length; i++){
 var hiddenCounter= 0;
 function hiddenCount(){
   for (var i= 0; i < board.cells.length; i++){
-    if (board.cells[i].isMine == board.cells[i].hidden){
+    if (board.cells[i].isMine === false && board.cells[i].hidden === false){
       hiddenCounter++ 
     }
   }
+  return hiddenCounter
 }
-    function checkForWin() {
-      for (var i= 0; i < board.cells.length; i++){
-      if (isMineCounter == isMarkedCounter && hiddenCounter== 0){
-        lib.displayMessage('You win!');
+
+function checkForWin() {
+  var checkForWin=0
+  for (let i = 0; i < board.cells.length; i++) {
+   if (board.cells[i].isMarked && board.cells[i].isMine){
+      checkForWin++
+    }
+   if (hiddenCount() === isMineCount() && conditionForWin() === isMineCounter()){
+      return lib.displayMessage('You win!');
        }
       }
-    }
-
 
 
   // You can use this function call to declare a winner (once you've
@@ -136,5 +141,5 @@ for (var i = 0; i < surrounding.length; i++)
 
  return count;
 }
-
+}
   
