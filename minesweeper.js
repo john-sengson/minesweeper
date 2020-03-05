@@ -93,7 +93,7 @@ for (var i= 0; i < board.cells.length; i++){
 }
 }
 var hiddenCounter= 0;
-function isMarkedhCount(){
+function hiddenCount(){
   for (var i= 0; i < board.cells.length; i++){
     if (board.cells[i].isMine == board.cells[i].hidden){
       hiddenCounter++ 
