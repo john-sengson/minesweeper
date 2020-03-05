@@ -33,12 +33,11 @@ function startGame () {
  //len[i].surroundingMines = countSurroundingMines(len[i]);
 //}
 
-var countSurroundingMines = board.cells
-function countSurroundingMines(){
+
 for (var i= 0; i < board.cells.length; i++) {
-  board.cells[i].surroundingMines= countSurroundingMines(board.cells[i]);
+board.cells[i].surroundingMines= countSurroundingMines(board.cells[i]);
 }
-}
+
 
 
   lib.initBoard()
