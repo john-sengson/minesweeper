@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 var board = {
   cells: [{row:0, col:0, isMine:false, isMarked:false, hidden:true},
           {row:0, col:1, isMine:false, isMarked:false, hidden:true},
-          {row:0, col:2, isMine:true,  isMarked:false, hidden: true}, 
+          {row:0, col:2, isMine:true,  isMarked:false, hidden:true}, 
           {row:0, col:3, isMine:false, isMarked:false, hidden:true}, 
           {row:1, col:0, isMine:true,  isMarked:false, hidden:true}, 
           {row:1, col:1, isMine:true,  isMarked:false, hidden:true}, 
@@ -38,18 +38,19 @@ for (var i= 0; i < board.cells.length; i++) {
 board.cells[i].surroundingMines= countSurroundingMines(board.cells[i])
 }
 
+document.addEventListener("click", checkforWin);
+document.addEventListener("contextmenu", checkforWin);
+
 
 
   lib.initBoard()
 }
 
+
 // add event listeners to call for checkwin when left button is clicked use document.addEventListener
 // create another for the right click as well
 // go to function checkforWin for next step
 // syntax is element.addEventListener("click", function())
-
-document.addEventListener("click", checkForWin);
-document.addEventListener("contextmenu", checkForWin);
 
 
 // Define this function to look for a win condition:
@@ -57,7 +58,7 @@ document.addEventListener("contextmenu", checkForWin);
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 // make a loop through all of board.cells and check if both isMine and .isMarked are true
-// if there is a mie not marked then not win
+// if there is a mine not marked then not win
 // if every mine is marked but still some hidden = true then not win yet
 //both criteria above pass then displayMesage function at the bottom of function to use .
 //need 3 var for 3 properties the do if else statements
@@ -75,8 +76,9 @@ document.addEventListener("contextmenu", checkForWin);
  // }
 //}
 //}
-var isMineCounter= 0;
+
 function isMineCount(){
+var isMineCounter= 0;
 for (var i= 0; i < board.cells.length; i++){
   if (board.cells[i].isMine){
    isMineCounter++
@@ -84,35 +86,42 @@ for (var i= 0; i < board.cells.length; i++){
   return isMineCounter;
 }
 }
-var isMarkedCounter= 0;
+
 function isMarkedCount(){
+var isMarkedCounter= 0;
 for (var i= 0; i < board.cells.length; i++){
   if (board.cells[i].isMarked){
    isMarkedCounter++
   }
+  return isMarkedCounter;
 }
 }
-var hiddenCounter= 0;
+
 function hiddenCount(){
+  var hiddenCounter= 0;
   for (var i= 0; i < board.cells.length; i++){
     if (board.cells[i].isMine === false && board.cells[i].hidden === false){
       hiddenCounter++ 
     }
   }
-  return hiddenCounter
+  return hiddenCounter;
 }
 
-function checkForWin() {
-  var checkForWin=0
+function winningCond(){
+  var winningCondition=0
   for (let i = 0; i < board.cells.length; i++) {
    if (board.cells[i].isMarked && board.cells[i].isMine){
-      checkForWin++
+      winningCondition++
     }
-   if (hiddenCount() === isMineCount() && conditionForWin() === isMineCounter()){
+  }
+  return winningCondition;
+}
+  function checkforWin(){
+   if ( isMineCount() === hiddenCount() && winningCond() === isMineCount()){
       return lib.displayMessage('You win!');
        }
       }
-
+    
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
@@ -141,5 +150,5 @@ for (var i = 0; i < surrounding.length; i++)
 
  return count;
 }
-}
+
   
